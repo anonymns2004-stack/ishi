@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ishi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffc0cb, #ffd6e0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255,77,109,0.6);
+    animation: float 7s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh) scale(0.6); opacity: 0;}
+    50% {opacity: 1;}
+    100% {transform: translateY(-10vh) scale(1.3); opacity: 0;}
+}
+
+/* Card */
+.container {
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(18px);
+    padding: 45px;
+    border-radius: 25px;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    margin: 20px;
+    animation: fadeIn 1.5s ease;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    color: #ff4d6d;
+    margin-bottom: 10px;
+}
+
+#text {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.8;
+    white-space: pre-line;
+    min-height: 200px;
+}
+
+/* Buttons */
+button {
+    margin-top: 18px;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #e63950;
+    transform: scale(1.07);
+}
+
+/* Final screen */
+#final {
+    display: none;
+}
+
+.final-text {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8;
+    animation: fadeIn 1.2s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+/* Floating hearts generator */
+for(let i=0;i<30;i++){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (10 + Math.random()*18) + "px";
+    heart.style.animationDuration = (5 + Math.random()*4) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<!-- MAIN -->
+<div class="container" id="main">
+    <h1>Ishi ❤️</h1>
+    <p id="text"></p>
+
+    <button onclick="forgive()">Forgive Me? 🥺</button>
+</div>
+
+<!-- FINAL -->
+<div class="container" id="final">
+    <h1>Yayyy 💕</h1>
+    <p class="final-text">
+        Hurreeehhhhhhh 😭❤️<br><br>
+
+        Bandariya 🐒 ik you will forgive me…<br><br>
+
+        Thank you for being this soft with me,
+        even when I mess up.<br><br>
+
+        I’ll be better… pakka.<br><br>
+
+        Now come here… don’t stay upset 🥺❤️
+    </p>
+</div>
+
+<script>
+// Typing animation
+const message = `Baby, please maan jao na... 🥺
+
+I’m really sorry Ishi…
+
+I know I hurt you, and I completely understand why.
+
+You told me not to bring up my past,
+and still I did… even if unintentionally.
+
+But I realize now — it matters how it made you feel.
+
+And I never want you to feel uncomfortable,
+or like you’re not the only one that matters.
+
+Because you are.
+
+What I have with you right now means everything to me.
+
+I’m just your baby… and I made a mistake 🥺
+but I promise I’ll learn from it.
+
+I’ll be better for you.
+
+Please don’t stay upset with me…
+
+Come back, talk to me…
+because everything feels incomplete without you 💕`;
+
+let i = 0;
+function typeWriter(){
+    if(i < message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 28);
+    }
+}
+typeWriter();
+
+// Forgive button
+function forgive(){
+    document.getElementById("main").style.display = "none";
+    document.getElementById("final").style.display = "block";
+}
+</script>
+
+</body>
+</html>
