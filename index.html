@@ -62,7 +62,7 @@ h1 {
 
 /* Buttons */
 button {
-    margin-top: 18px;
+    margin-top: 15px;
     padding: 12px 26px;
     border: none;
     border-radius: 30px;
@@ -101,7 +101,7 @@ button:hover {
 <body>
 
 <script>
-/* Floating hearts generator */
+/* Floating hearts */
 for(let i=0;i<30;i++){
     let heart = document.createElement("div");
     heart.className = "heart";
@@ -118,6 +118,9 @@ for(let i=0;i<30;i++){
     <h1>Ishi ❤️</h1>
     <p id="text"></p>
 
+    <p style="font-size:12px; color:#666;">tap anywhere… 🎶</p>
+
+    <button onclick="playMusic()">Play Song 🎶</button><br>
     <button onclick="forgive()">Forgive Me? 🥺</button>
 </div>
 
@@ -137,6 +140,11 @@ for(let i=0;i<30;i++){
         Now come here… don’t stay upset 🥺❤️
     </p>
 </div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 // Typing animation
@@ -178,22 +186,30 @@ function typeWriter(){
 }
 typeWriter();
 
+// Music controls
+const music = document.getElementById("bgMusic");
+
+// try autoplay
+window.addEventListener("load", () => {
+    music.play().catch(() => {});
+});
+
+// play on click anywhere
+document.addEventListener("click", () => {
+    music.play();
+}, { once: true });
+
+// button play
+function playMusic(){
+    music.play();
+}
+
 // Forgive button
 function forgive(){
     document.getElementById("main").style.display = "none";
     document.getElementById("final").style.display = "block";
 }
 </script>
-<audio id="bgMusic" autoplay loop>
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
 
-<script>
-// autoplay fix (browser restriction)
-document.addEventListener("click", function () {
-    let music = document.getElementById("bgMusic");
-    music.play();
-}, { once: true });
-</script>
 </body>
 </html>
