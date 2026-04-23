@@ -184,6 +184,16 @@ function forgive(){
     document.getElementById("final").style.display = "block";
 }
 </script>
+<audio id="bgMusic" autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
+<script>
+// autoplay fix (browser restriction)
+document.addEventListener("click", function () {
+    let music = document.getElementById("bgMusic");
+    music.play();
+}, { once: true });
+</script>
 </body>
 </html>
