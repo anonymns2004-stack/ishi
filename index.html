@@ -42,14 +42,12 @@ body {
     text-align: center;
     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     margin: 20px;
-    animation: fadeIn 1.5s ease;
 }
 
 h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 52px;
     color: #ff4d6d;
-    margin-bottom: 10px;
 }
 
 #text {
@@ -62,7 +60,7 @@ h1 {
 
 /* Buttons */
 button {
-    margin-top: 15px;
+    margin-top: 12px;
     padding: 12px 26px;
     border: none;
     border-radius: 30px;
@@ -71,29 +69,17 @@ button {
     cursor: pointer;
     transition: 0.3s;
     font-size: 14px;
+    display: block;
+    width: 100%;
 }
 
 button:hover {
     background: #e63950;
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
-/* Final screen */
 #final {
     display: none;
-}
-
-.final-text {
-    font-size: 18px;
-    color: #333;
-    line-height: 1.8;
-    animation: fadeIn 1.2s ease;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
 }
 </style>
 </head>
@@ -120,24 +106,20 @@ for(let i=0;i<30;i++){
 
     <p style="font-size:12px; color:#666;">tap anywhere… 🎶</p>
 
-    <button onclick="playMusic()">Play Song 🎶</button><br>
+    <!-- SONG BUTTON (NOW CLEARLY VISIBLE) -->
+    <button onclick="playMusic()">Play Our Song 🎶</button>
+
+    <!-- FORGIVE BUTTON -->
     <button onclick="forgive()">Forgive Me? 🥺</button>
 </div>
 
 <!-- FINAL -->
 <div class="container" id="final">
     <h1>Yayyy 💕</h1>
-    <p class="final-text">
+    <p>
         Hurreeehhhhhhh 😭❤️<br><br>
-
         Bandariya 🐒 ik you will forgive me…<br><br>
-
-        Thank you for being this soft with me,
-        even when I mess up.<br><br>
-
-        I’ll be better… pakka.<br><br>
-
-        Now come here… don’t stay upset 🥺❤️
+        I’ll be better… pakka 🥺❤️
     </p>
 </div>
 
@@ -147,7 +129,7 @@ for(let i=0;i<30;i++){
 </audio>
 
 <script>
-// Typing animation
+// typing animation
 const message = `Baby, please maan jao na... 🥺
 
 I’m really sorry Ishi…
@@ -159,22 +141,11 @@ and still I did… even if unintentionally.
 
 But I realize now — it matters how it made you feel.
 
-And I never want you to feel uncomfortable,
-or like you’re not the only one that matters.
+And I never want you to feel uncomfortable.
 
-Because you are.
+You mean a lot to me.
 
-What I have with you right now means everything to me.
-
-I’m just your baby… and I made a mistake 🥺
-but I promise I’ll learn from it.
-
-I’ll be better for you.
-
-Please don’t stay upset with me…
-
-Come back, talk to me…
-because everything feels incomplete without you 💕`;
+Please forgive me? ❤️`;
 
 let i = 0;
 function typeWriter(){
@@ -186,25 +157,19 @@ function typeWriter(){
 }
 typeWriter();
 
-// Music controls
+// music
 const music = document.getElementById("bgMusic");
 
-// try autoplay
-window.addEventListener("load", () => {
-    music.play().catch(() => {});
-});
-
-// play on click anywhere
-document.addEventListener("click", () => {
-    music.play();
-}, { once: true });
-
-// button play
 function playMusic(){
     music.play();
 }
 
-// Forgive button
+// play on first click anywhere
+document.addEventListener("click", () => {
+    music.play();
+}, { once: true });
+
+// forgive
 function forgive(){
     document.getElementById("main").style.display = "none";
     document.getElementById("final").style.display = "block";
